@@ -1,5 +1,6 @@
 'use client'
 
+import { useUser } from "@clerk/nextjs";
 import { NextUIProvider } from "@nextui-org/react"
 import { usePathname } from "next/navigation"
 
@@ -9,6 +10,12 @@ interface ProviderProps {
 
 export default function   Provider({ children } : ProviderProps) {
   const pathname = usePathname();
+
+  const { isLoaded } = useUser();
+
+  if(!isLoaded) {
+    return null
+  }
 
   return (
     <NextUIProvider>
@@ -20,7 +27,7 @@ export default function   Provider({ children } : ProviderProps) {
         pathname !== "/success" &&
         pathname !== "/sign-in" ? (
         <div className='w-full flex'>
-          <div className='w-[1290px] h-screen overflow-scroll'>
+          <div className='h-screen overflow-hidden'>
             {children}
           </div>
         </div>

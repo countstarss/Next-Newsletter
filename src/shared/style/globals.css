@@ -30,7 +30,7 @@ body {
 }
 
 .rotating-image {
-  animation: rotation 15s infinite linear;
+  animation: rotation 30s infinite linear;
 }
 
 @keyframes rotation {
@@ -61,3 +61,13 @@ body {
 .jswdLm .blockbuilder-branding{
   display: none!important;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Sankofa+Display&display=swap');
+
+
+.sankofa-display-regular {
+  font-family: "Sankofa+Display", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
