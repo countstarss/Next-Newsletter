@@ -40,7 +40,7 @@ const DashboardItems = ({ bottomContent }: Props) => {
             <Link
               key={index}
               href={item.url}
-              className={`p-2 py-2 flex items-center border-t-slate-400 text-gray-400 rounded-lg ${item.url === activeRoute &&
+              className={`p-2 py-2 flex items-center border-t-slate-400 text-gray-400 rounded ${item.url === activeRoute &&
                 "bg-slate-300"
                 }`}
             >

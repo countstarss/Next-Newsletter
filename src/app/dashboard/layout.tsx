@@ -22,7 +22,7 @@ export default function layout({ children }: ProviderProps) {
   }
   const [show, setShow] = useState(true);
   const [delay, setDelay] = useState(false);
-  const handleSetTimeOut = (trig:boolean) => {
+  const handleSetTimeOut = (trig: boolean) => {
     setTimeout(() => {
       setShow(trig)
     }, 400);
@@ -51,7 +51,7 @@ export default function layout({ children }: ProviderProps) {
                 ${!show ? "-translate-x-80" : "translate-x-0"
                 }`}
               >
-                <DashboardSidebar onClose={setShow} status={show} onDelay={handleSetTimeOut} delay={delay}/>
+                <DashboardSidebar onClose={setShow} status={show} onDelay={handleSetTimeOut} delay={delay} />
               </div>
               {/* 
               //MARK: 50px Button
@@ -62,14 +62,14 @@ export default function layout({ children }: ProviderProps) {
                   ${show ? "-translate-x-[50px]" : "-translate-x-[250px]"}
                   ${show ? "opacity-0" : "opacity-100"}
                 `}
-                onClick={ ()=> {
+                onClick={() => {
                   // () => setShow(true);
                   () => handleSetTimeOut(true)
                 }
                 }
               >
                 <SlArrowRight
-                  className='text-slate-200 text-xl font-bold text-center h-[98vh]'
+                  className='text-slate-200 text-xl font-bold text-center h-[98vh] ml-4'
                   onClick={() =>
                     // () => setShow(true)
                     handleSetTimeOut(true)
@@ -91,27 +91,16 @@ export default function layout({ children }: ProviderProps) {
               //MARK: 50px | 350px
               */}
               <div
-                  // bg-transparent 
+                // bg-transparent 
                 className={`
                     'fixed right-0  h-fit 
                     items-center block transition-transform duration-500 ease-in-out bg-slate-50 overflow-hidden'
                     ${show ? "w-[50px]" : "w-[300px]"}
                     `}
                 style={{
-                  backgroundColor:"#fff"
+                  backgroundColor: "#fff"
                 }}
               >
-                {/* <div 
-                className={`
-                  'h-[500px] bg-indigo-400'
-                  ${show ? "w-[50px]" : "w-[300px]"}
-                  `}
-                >
-                  <h1 className='text-2xl py-10'>Hello ResuorceHello ResuorceHello Resuorce</h1>
-                  <h1 className='text-2xl py-10'>Hello ResuorceHello ResuorceHello Resuorce</h1>
-                  <h1 className='text-2xl py-10'>Hello ResuorceHello ResuorceHello Resuorce</h1>
-                  <h1 className='text-2xl py-10'>Hello ResuorceHello ResuorceHello Resuorce</h1>
-                </div> */}
               </div>
             </div>
           </div>

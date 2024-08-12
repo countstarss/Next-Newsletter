@@ -1,12 +1,12 @@
 import React from 'react'
-import Write from './_components/Write';
+import NewEmail from './_components/NewEmail'
 
 type Props = {}
 
 const page = (props: Props) => {
   return (
-    <Write />
+    <NewEmail />
   )
 }
 
-export default page;
+export default page
