@@ -20,16 +20,16 @@ const ToolBar = (props: Props) => {
           </Link>
         )
       }
-      <SignedOut>
         <Link href={"/sign-in"}>
-          <h1>Sign In</h1>
+          <SignedOut>
+              <h1>Sign In</h1>
+          </SignedOut>
         </Link>
-      </SignedOut>
-      <SignedIn>
       <div className='flex py-[10px] rounded scale-150 items-center text-center'>
+        <SignedIn>
           <UserButton />
+        </SignedIn>
       </div>
-      </SignedIn>
     </div>
   )
 }

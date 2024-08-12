@@ -1,5 +1,5 @@
 // MARK: 自定义ICON
-import { ICONS } from "@/shared/utils/icons";
+import { ICONS } from "../../utils/icons"
 // INFO: `atom` 是一种状态的原子单元，用于存储和管理应用中的状态
 import { atom } from "jotai";
 
@@ -89,6 +89,10 @@ export const scalePlan: PlanType[] = [
   },
 ];
 
+
+
+
+
 export const sideBarActiveItem = atom<string>("/dashboard");
 
 export const reportFilterActiveItem = atom<string>("Overview");
@@ -97,12 +101,20 @@ export const emailEditorDefaultValue = atom<string>("");
 
 export const settingsActiveItem = atom<string>("Profile");
 
+export const showSidebarStatus = atom<boolean>(true);
+
+
 // MARK: sideBarItems
 export const sideBarItems: DashboardSideBarTypes[] = [
   {
     title: "Dashboard",
     url: "/dashboard",
     icon: ICONS.dashboard,
+  },
+  {
+    title: "Audience",
+    url: "/dashboard/audience",
+    icon: ICONS.audience,
   },
   {
     title: "Write",
@@ -113,11 +125,6 @@ export const sideBarItems: DashboardSideBarTypes[] = [
     title: "Grow",
     url: "/dashboard/grow",
     icon: ICONS.analytics,
-  },
-  {
-    title: "Audience",
-    url: "/dashboard/audience",
-    icon: ICONS.audience,
   },
 ];
 

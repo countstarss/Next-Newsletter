@@ -70,4 +70,7 @@ body {
   font-weight: 900;
   font-style: normal;
 }
+::-webkit-scrollbar {
+  display: none;
+}
 
