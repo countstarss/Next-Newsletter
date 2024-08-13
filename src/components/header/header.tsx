@@ -9,14 +9,14 @@ type Props = {}
 
 const Header = (props: Props) => {
   return (
-    <header className='w-screen fixed top-0 z-[999] border-b border-b-[#000] px-10 py-4 flex flex-row items-center justify-between bg-white text-black'>
-        {/* <div> */}
+    <header className='w-screen fixed top-0 z-[999] border-b border-b-[#000] px-10 py-4 flex flex-row items-center justify-between bg-white text-black h-[75px]'>
           <Link href="/">
             <Logo />
           </Link>
-        {/* </div> */}
         <NavItems />
-        <ToolBar />
+        <div className='w-[160px]'>
+          <ToolBar />
+        </div>
     </header>
   )
 }

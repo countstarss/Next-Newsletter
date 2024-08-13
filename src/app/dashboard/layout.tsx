@@ -3,7 +3,7 @@
 import { useUser } from "@clerk/nextjs";
 import { NextUIProvider } from "@nextui-org/react"
 import { usePathname } from "next/navigation"
-import DashboardSidebar from "@/app/dashboard/_components/DashboardSidebar";
+import DashboardSidebar from "./_components/Sidebar/DashboardSidebar";
 import { useState } from "react";
 import { SlArrowRight } from "react-icons/sl";
 
@@ -39,15 +39,17 @@ export default function layout({ children }: ProviderProps) {
           pathname !== "/success" &&
           pathname !== "/sign-in" ? (
           // MARK: Max-W-Full
-          <div className='max-w-full flex bg-transparent'>
-
-
+          <div className={`
+          'max-w-full flex bg-transparent'
+          }`}
+          >
             {/* FIXME: 再尝试一个ATOM 方案
             //MARK: 300px SideBar
              */}
+
             <div className='flex flex-row w-[300px]'>
               <div className={`
-                "fixed left-0 top-0  w-[250px] h-fit bg-[#2b2b2b]  transition-transform duration-500 ease-in overflow-x-auto" 
+                "absolute left-0 top-0  w-[250px] h-fit bg-[#2b2b2b]  transition-transform duration-500 ease-in overflow-x-auto" 
                 ${!show ? "-translate-x-80" : "translate-x-0"
                 }`}
               >
@@ -82,34 +84,23 @@ export default function layout({ children }: ProviderProps) {
               <div
                 className={`
                     flex-grow transition-all duration-500 ease-in-out
-                    ${show ? "ml-[0px]" : "ml-[-100px]"}
+                    ${show ? "ml-[0px]" : "ml-[-150px]"}
                   `}
               >
                 {children}
               </div>
-              {/* 
+
+            </div>
+            {/* 
               //MARK: 50px | 350px
               */}
-              <div
-                // bg-transparent 
-                className={`
-                    'fixed right-0  h-fit 
-                    items-center block transition-transform duration-500 ease-in-out bg-slate-50 overflow-hidden'
-                    ${show ? "w-[50px]" : "w-[300px]"}
-                    `}
-                style={{
-                  backgroundColor: "#fff"
-                }}
-              >
-              </div>
-            </div>
           </div>
         ) : (
-          <div className='flex'>
+          <div className='flex bg-pink-400 w-screen h-screen'>
             {children}
           </div>
         )
       }
     </NextUIProvider>
-  );
+  )
 }

@@ -3,10 +3,10 @@
 import React from 'react'
 import { useUser } from '@clerk/nextjs';
 import Dashboard from './_components/Dashboard';
-import Sumary from './_components/Sumary';
-import ActiveSubChart from './_components/ActiveSubChart';
+import Sumary from './_components/HomePage/Sumary';
+import ActiveSubChart from './_components/HomePage/ActiveSubChart';
 import { SlArrowRight } from 'react-icons/sl';
-import Resource from './_components/Resource';
+import Resource from './_components/HomePage/Resource';
 
 type Props = {
   show: boolean

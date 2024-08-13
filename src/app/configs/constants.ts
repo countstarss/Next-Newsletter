@@ -117,6 +117,11 @@ export const sideBarItems: DashboardSideBarTypes[] = [
     icon: ICONS.audience,
   },
   {
+    title: "Subscribe",
+    url: "/subscribe",
+    icon: ICONS.subscribe,
+  },
+  {
     title: "Write",
     url: "/dashboard/write",
     icon: ICONS.write,

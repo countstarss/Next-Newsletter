@@ -73,3 +73,17 @@ body{
 ::-webkit-scrollbar{
   display: none;
 }
+
+
+@keyframes spin {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.spinSlow {
+  animation: spin 30s linear infinite; /* Adjust the time for the speed of the spin */
+}

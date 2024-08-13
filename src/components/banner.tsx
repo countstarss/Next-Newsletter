@@ -22,13 +22,13 @@ const Banner = (props: Props) => {
         ></path>
       </svg>
       <div className="w-[full] h-full flex justify-center items-center relative overflow-hidden">
-        <div className="w-[full] h-full flex justify-center items-center scale-125 fixed">
+        <div className="w-[full] h-full flex justify-center items-center scale-110 fixed">
           <Image
             src={MobileHero}
             alt="111"
             width={1500}
             height={1500}
-            className="w-[1000px] h-fit object-cover rotating-image z-10"
+            className="w-[1000px] h-fit object-cover animation spinSlow z-10"
             priority
           ></Image>
         </div>

@@ -2,7 +2,7 @@
 import { sideBarBottomItems } from '@/app/configs/constants'
 import { sideBarItems } from '@/app/configs/constants'
 import useRouteChange from '@/hooks/useRouteChange'
-import { ICONS } from "../../../utils/icons"
+import { ICONS } from '@/utils/icons'
 import { SignOutButton, useClerk } from '@clerk/nextjs'
 import Link from 'next/link'
 import React, { useEffect } from 'react'
@@ -34,13 +34,13 @@ const DashboardItems = ({ bottomContent }: Props) => {
 
   return (
     <div className='flex flex-col justify-between h-full w-full'>
-      <div className='flex flex-col h-fit w-full pt-16'>
+      <div className='flex flex-col h-fit w-[240px] pt-16'>
         {
           sideBarItems.map((item: DashboardSideBarTypes, index: number) => (
             <Link
               key={index}
               href={item.url}
-              className={`p-2 py-2 flex items-center border-t-slate-400 text-gray-400 rounded ${item.url === activeRoute &&
+              className={`px-4 py-2 flex items-center border-t-slate-400 text-gray-400 rounded ${item.url === activeRoute &&
                 "bg-slate-300"
                 }`}
             >
@@ -57,7 +57,7 @@ const DashboardItems = ({ bottomContent }: Props) => {
             </Link>
           ))
         }
-        <UserPlan />
+        {/* <UserPlan /> */}
       </div>
 
 
