@@ -11,8 +11,8 @@ interface Props {
 
 // MARK: AWS-config
 AWS.config.update({
-  accessKeyId: process.env.AWS_ACCESS_KEY,
-  secretAccessKey:process.env.AWS_SECRET_KEY,
+  accessKeyId: process.env.MY_AWS_ACCESS_KEY,
+  secretAccessKey:process.env.MY_AWS_SECRET_KEY,
   region:'ap-southeast-2'
 })
 
