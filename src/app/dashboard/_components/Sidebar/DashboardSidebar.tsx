@@ -8,6 +8,7 @@ import { RiArrowLeftDoubleFill } from "react-icons/ri";
 import useToggleSidebar from '@/hooks/useToggleSidebar';
 import { SetStateAction } from 'jotai';
 import "./dashboard.css"
+import Link from 'next/link';
 
 type Props = {
   onClose:Dispatch<SetStateAction<boolean>>,
@@ -58,7 +59,11 @@ const DashboardSidebar = ({ onClose,status,onDelay,delay }: Props) => {
             />
           </div>
           <div className='bg-slate-500 hover:bg-slate-600 rounded'>
-            <CiEdit className='text-gray-400 m-[4px] text-2xl  font-bold'/>
+            <Link href="dashboard/new-email">
+              <CiEdit 
+                className='text-gray-400 m-[4px] text-2xl  font-bold'
+              />
+            </Link>
           </div>
         </div>
 

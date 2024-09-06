@@ -17,6 +17,6 @@ export const getSubscribers = async ({ newsletterOwnerId } : Props) => {
     return subscribers
   } catch (error) {
     console.log(error);
-    
+    return null
   }
 }

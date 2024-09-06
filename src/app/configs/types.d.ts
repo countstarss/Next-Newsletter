@@ -26,10 +26,9 @@ type DashboardSideBarTypes = {
 
 // MARK: - subscribersDataTypes
 type subscribersDataTypes = {
-  _id: string;
+  id: string;
   email: string;
   createdAt: string | Date;
-  source: string;
   status?: string;
 };
 

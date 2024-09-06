@@ -10,9 +10,14 @@ type Props = {}
 
 const NewEmail = (props: Props) => {
 
-  const searchParams = useSearchParams()
-  const subject:string = searchParams.get("subject")!
-  const subjectTitle = subject.replace(/-/g," ")
+  let subjectTitle = "default-title"; // 默认值
+  const searchParams = useSearchParams();
+  const subject = searchParams.get("subject"); // 获取查询参数
+
+  if (subject) {
+    subjectTitle = subject.replace(/-/g, " "); // 替换 "-" 为 " "
+  }
+  
 
   return (
     <div className='w-full h-full bg-gray-800'>

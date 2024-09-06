@@ -2,6 +2,7 @@ import { Button } from '@nextui-org/react';
 import Image from 'next/image';
 import React from 'react'
 import MobileHero from "./MobileHero.png"
+import Link from 'next/link';
 
 type Props = {}
 
@@ -74,11 +75,16 @@ const Banner = (props: Props) => {
           <br />
           <div className="flex w-full justify-center">
             <Button className="text-xl !p-4 bg-slate-800 text-white rounded outline-none">
-              Get Started
+              <a href="/dashboard">
+                Get Started
+              </a>
             </Button>
           </div>
           <br />
-          <h5 className="text-center text-lg">start a 30day free trial</h5>
+          <Button className='rounded-lg'>
+            {/* <h5 className="text-center text-lg"></h5> */}
+            start a 30day free trial
+          </Button>
         </div>
       </div>
     </div>

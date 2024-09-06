@@ -4,9 +4,9 @@ import EmailEditor, { EditorRef, EmailEditorProps } from 'react-email-editor';
 import { useClerk } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { saveEmail } from '@/app/actions/save.email';
+import { saveEmail } from '@/app/actions/Email/save.email';
 import { Toaster, toast } from 'sonner';
-import { getEmailDetail } from '@/app/actions/get.emailDetail';
+import { getEmailDetail } from '@/app/actions/Email/get.emailDetail';
 
 type Props = {
   subjectTitle: string;

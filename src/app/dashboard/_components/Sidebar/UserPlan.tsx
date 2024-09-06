@@ -5,7 +5,7 @@ type Props = {}
 
 const UserPlan = (props: Props) => {
   return (
-    <div className='flex flex-col bg-pink-100 rounded-xl w-full h-fit mt-4'>
+    <div className='flex flex-col bg-pink-100 rounded-xl w-[95%] h-fit mt-4 mx-auto'>
       <div className='flex flex-row items-center text-center'>
         <h4 className='m-1 p-[6px] text-lg text-black'>Launch Plan</h4>
         <div className='flex flex-row m-1 p-2 bg-pink-300 rounded'>

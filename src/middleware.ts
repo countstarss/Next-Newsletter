@@ -1,6 +1,5 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
-
 const isPublicRoute = createRouteMatcher(
   //MARK: - 开放访问控制:
   [
@@ -9,7 +8,11 @@ const isPublicRoute = createRouteMatcher(
     '/',
   ]
 );
+
+
 export default clerkMiddleware((auth, request) => {
+  
+  // 继续正常处理请求
   if (!isPublicRoute(request)) {
     auth().protect();
   }
@@ -24,3 +27,7 @@ export const config = {
     '/(api|trpc)(.*)',
   ],
 };
+
+
+
+

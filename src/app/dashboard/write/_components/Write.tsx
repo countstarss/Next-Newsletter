@@ -1,5 +1,5 @@
 'use client'
-import { getEmails } from '@/app/actions/get.emails'
+import { getEmails } from '@/app/actions/Email/get.emails'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { useListStore } from '@/lib/store'
@@ -23,10 +23,14 @@ const Write = (props: Props) => {
   const router = useRouter()
 
   const findEmails = async () => {
-    await getEmails({ newsletterOwnerId: user?.id! })
+    try {
+      await getEmails({ newsletterOwnerId: user?.id! })
       .then((res: any) => {
         setEmails(res)
       })
+    } catch (error) {
+      console.log(error);
+    }
   }
   useEffect(() => {
     findEmails()
@@ -48,8 +52,8 @@ const Write = (props: Props) => {
 
 
   return (
-    <div className='w-[85vw] flex '>
-      <div className='w-[70vw] flex flex-grow-0 py-8 pr-5 flex-wrap justify-around gap-5 mx-auto'>
+    <div className='flex xl:flex-row flex-col w-full h-full overflow-scroll p-4 gap-4 px-[300px]'>
+      <div className='w-[75vw] grid lg:grid-cols-5 md:grid-cols-3 py-8 pr-5 flex-wrap justify-around gap-5 mx-[5vw]'>
         {
           emails && emails.map((email: any) => {
             const formattedTitle = email?.title.replace(/\s/, " ").replace(/\&/, " ")

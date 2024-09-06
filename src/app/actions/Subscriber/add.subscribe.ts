@@ -1,7 +1,7 @@
 'use server'
 
 import { prisma } from "@/lib/db"
-import { useClerk } from "@clerk/nextjs"
+import { useClerk, useUser } from "@clerk/nextjs"
 import { log } from "console"
 import { toast } from "sonner"
 
@@ -10,33 +10,30 @@ type Props = {
   newsletterOwnerId: string
 }
 
-export const AddSubscribe = async({ email,newsletterOwnerId } : Props) => {
+export const AddSubscribe = async({ email, newsletterOwnerId} : Props) => {
   try {
 
-    const { user } = useClerk();
-
-    const isValid = await prisma.subscriber.findFirst({
+    const dbsubscriber = await prisma.subscriber.findFirst({
       where: {
-        email:email,
-        newsletterOwnerId:user?.id!
+        email
       }
     })
 
-    if(!isValid) {
+    if(dbsubscriber) {
       console.log("Email has exist");
-      toast.error("Email has exist")
       return;
     }
 
     const subscribe = await prisma.subscriber.create({
       data: {
         email:email,
-        newsletterOwnerId:user?.id!,
+        newsletterOwnerId:newsletterOwnerId
       }
     })
     return subscribe
   } catch (error) {
     console.log(error);
+    return null
   }
 }
 

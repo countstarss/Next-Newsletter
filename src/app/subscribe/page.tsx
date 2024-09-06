@@ -2,19 +2,30 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import React, { useState } from 'react'
-import { AddSubscribe } from '../actions/add.subscribe';
+import { AddSubscribe } from '../actions/Subscriber/add.subscribe';
 import { useClerk } from '@clerk/nextjs';
+import { toast } from 'sonner';
 
 type Props = {}
 
-const page =  (props: Props) => {
+const page = (props: Props) => {
 
   const [value, setValue] = useState("");
   const { user } = useClerk();
   const newsletterOwnerId = user?.id!
   const handleSubscribe = async () => {
     // Subscribe Here
-    await AddSubscribe({ email:value, newsletterOwnerId:newsletterOwnerId })
+    try {
+      const result = await AddSubscribe({ email:value,newsletterOwnerId:newsletterOwnerId })
+      if(result) {
+        toast.success("Subscribe Succesfully!")
+      } else {
+        toast.error("Something went wrong,please try again")
+      }
+      setValue("")
+    }catch(error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -34,7 +45,12 @@ const page =  (props: Props) => {
             <div className='w-1/3 p-[6px] bg-black text-white hover:scale-110 transform duration-300'>
               <Button 
                 className=' text-lg p-4 '
-                onClick={handleSubscribe}
+                onClick={
+                  () => {
+                    console.log("Button has been clicked");
+                    handleSubscribe()
+                  }
+                }
               >
                 Subscribe
               </Button>

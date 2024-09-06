@@ -10,3 +10,20 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 - **types.d.ts**能够**全局**声明类型，不需要引入，直接就可以使用
 - 
+
+
+## timeago.js
+- 把createdAt时间格式化成多长时间之前
+- 使用：
+``` ts
+import { format } form "timeago.js"
+
+data?.forEach((i:subscribersDataTypes) => {
+  rows.push({
+    id:i.id,
+    email: i.email,
+    createdAt: format(i.createdAt),
+    status: i?.status,
+  })
+});
+```

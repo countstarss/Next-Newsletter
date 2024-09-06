@@ -40,11 +40,11 @@ const DashboardItems = ({ bottomContent }: Props) => {
             <Link
               key={index}
               href={item.url}
-              className={`px-4 py-2 flex items-center border-t-slate-400 text-gray-400 rounded ${item.url === activeRoute &&
-                "bg-slate-300"
-                }`}
+              className={`w-[230px] mx-auto px-4 py-2 flex items-center border-t-slate-400 text-gray-400 rounded-xl hover:bg-slate-300 hover:text-[#463bbd]
+                ${item.url === activeRoute && "bg-slate-300"}`
+              }
             >
-              <span className={`text-lg mx-2 ${item.url === activeRoute && "text-[#463bbd]"
+              <span className={`text-lg mx-2  ${item.url === activeRoute && "text-[#463bbd]"
                 }`}
               >
                 {item.icon}
@@ -57,7 +57,7 @@ const DashboardItems = ({ bottomContent }: Props) => {
             </Link>
           ))
         }
-        {/* <UserPlan /> */}
+        <UserPlan />
       </div>
 
 
