@@ -51,7 +51,7 @@ interface subscribersAnalyticsData {
   count:string
 }
 
-const page = ({ show }: Props) => {
+export const page = ({ show }: Props) => {
   const { data,loading,error } = useSubscriberData();
   const subscribers = data?.length
 
@@ -102,7 +102,7 @@ const page = ({ show }: Props) => {
             <h1 className='text-2xl text-black font-medium'>
               HI,{user?.fullName}👏
             </h1>
-            <h5 className='text-black text-sm'>Here's how you publication is doing</h5>
+            <h5 className='text-black text-sm'>Here is how you publication is doing</h5>
           </div>
         </div>
 
@@ -265,4 +265,3 @@ const page = ({ show }: Props) => {
   )
 }
 
-export default page;

@@ -10,10 +10,10 @@ import { redirect, useRouter } from 'next/navigation';
 
 type Props = {}
 
-const page = (props: Props) => {
+const Page = (props: Props) => {
 
   const router = useRouter()
-  const [enteredEmail, setEnteredEmail] = useState("");
+  const [enteredEmail , setEnteredEmail] = useState("");
   const { user } = useClerk();
   const newsletterOwnerId = user?.id!
   const handleSubscribe = async () => {
@@ -45,7 +45,7 @@ const page = (props: Props) => {
     <div className='w-sceern h-screen bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 z-full'>
       <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-full'>
         <div className='flex flex-col '>
-          <h1 className='text-white text-6xl font-bold'>Luke Ling's NewsLetter</h1>
+          <h1 className='text-white text-6xl font-bold'>Luke Ling&apos;s NewsLetter</h1>
           <div className='flex flex-row p-6 m-8 bg-slate-50 w-300px items-center text-center rounded'>
             <Input
               type='email'
@@ -75,4 +75,4 @@ const page = (props: Props) => {
   )
 }
 
-export default page;
+export default Page;

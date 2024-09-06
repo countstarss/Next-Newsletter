@@ -1,25 +1,20 @@
 'use client'
-
 import { useUser } from "@clerk/nextjs";
 import { NextUIProvider } from "@nextui-org/react"
 import { usePathname } from "next/navigation"
 import DashboardSidebar from "./_components/Sidebar/DashboardSidebar";
 import { useState } from "react";
 import { SlArrowRight } from "react-icons/sl";
+import DashboardminiBar from "./_components/Sidebar/DashboardMiniBar";
 
 interface ProviderProps {
   children: React.ReactNode
 }
 
-export default function layout({ children }: ProviderProps) {
+export default function Layout({ children }: ProviderProps) {
 
   const pathname = usePathname();
 
-  const { isLoaded } = useUser();
-
-  if (!isLoaded) {
-    return null
-  }
   const [show, setShow] = useState(true);
   const [delay, setDelay] = useState(false);
   const handleSetTimeOut = (trig: boolean) => {
