@@ -5,24 +5,37 @@ import React, { useState } from 'react'
 import { AddSubscribe } from '../actions/Subscriber/add.subscribe';
 import { useClerk } from '@clerk/nextjs';
 import { toast } from 'sonner';
+import { sendVerificationEmail } from '@/utils/email.sender';
+import { redirect, useRouter } from 'next/navigation';
 
 type Props = {}
 
 const page = (props: Props) => {
 
-  const [value, setValue] = useState("");
+  const router = useRouter()
+  const [enteredEmail, setEnteredEmail] = useState("");
   const { user } = useClerk();
   const newsletterOwnerId = user?.id!
   const handleSubscribe = async () => {
     // Subscribe Here
     try {
-      const result = await AddSubscribe({ email:value,newsletterOwnerId:newsletterOwnerId })
+      const result = await AddSubscribe({ email:enteredEmail,newsletterOwnerId:newsletterOwnerId })
       if(result) {
         toast.success("Subscribe Succesfully!")
       } else {
         toast.error("Something went wrong,please try again")
       }
-      setValue("")
+      setTimeout(async () => {
+        // Vertify Email
+        const res = await sendVerificationEmail(enteredEmail)
+        if(res) {
+          toast.success(`Send Vertify Email to${enteredEmail}`)
+        }
+        setEnteredEmail("")
+      },1500)
+
+      router.push('/dashboard')
+
     }catch(error) {
       console.log(error);
     }
@@ -37,8 +50,8 @@ const page = (props: Props) => {
             <Input
               type='email'
               placeholder='Enter your Email'
-              onChange={(e) => setValue(e.target.value)}
-              value={value}
+              onChange={(e) => setEnteredEmail(e.target.value)}
+              value={enteredEmail}
               className='text-gray-400 text-2xl w-2/3 h-[50px]'
             >
             </Input>

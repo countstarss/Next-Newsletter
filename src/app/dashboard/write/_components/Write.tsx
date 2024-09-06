@@ -1,4 +1,5 @@
 'use client'
+import { deleteEmail } from '@/app/actions/Email/delete.email'
 import { getEmails } from '@/app/actions/Email/get.emails'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -22,6 +23,7 @@ const Write = (props: Props) => {
   const { user } = useClerk()
   const router = useRouter()
 
+  // MARK: findEmails
   const findEmails = async () => {
     try {
       await getEmails({ newsletterOwnerId: user?.id! })
@@ -36,6 +38,7 @@ const Write = (props: Props) => {
     findEmails()
   }, [user])
 
+  // MARK: handleCreate
   const handleCreate = (emailTitle: string) => {
     if (emailTitle.length < 2) {
       toast('email title required')
@@ -46,8 +49,12 @@ const Write = (props: Props) => {
     }
   }
 
-  const deleteHanlder = (id: string) => {
-
+  // MARK: deleteHanlder
+  const deleteHanlder = async (id: string) => {
+    const deleted = await deleteEmail({ id:id }).then((res) => findEmails() )
+    if(deleted!) {
+      toast.success("Successfully deleted email template");
+    }
   }
 
 

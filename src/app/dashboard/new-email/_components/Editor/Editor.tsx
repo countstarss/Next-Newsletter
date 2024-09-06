@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
+// MARK: Email-Editor
 import EmailEditor, { EditorRef, EmailEditorProps } from 'react-email-editor';
 import { useClerk } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
@@ -7,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { saveEmail } from '@/app/actions/Email/save.email';
 import { Toaster, toast } from 'sonner';
 import { getEmailDetail } from '@/app/actions/Email/get.emailDetail';
+import sendEmail from '@/utils/email.sender';
 
 type Props = {
   subjectTitle: string;
@@ -19,6 +21,7 @@ const Editor = ({ subjectTitle }: Props) => {
   const emailEditorRef = useRef<EditorRef>(null);
   const history = useRouter();
 
+  // MARK: fetchEmailDetails
   useEffect(() => {
     const fetchEmailDetails = async () => {
       try {
@@ -50,27 +53,42 @@ const Editor = ({ subjectTitle }: Props) => {
     }
   }, [jsonData]);
 
+  // MARK: exportHtml
   const exportHtml = () => {
     const unlayer = emailEditorRef.current?.editor;
 
     unlayer?.exportHtml(async (data) => {
       const { design, html } = data;
       setJsonData(design);
-      // await sendEmail({
-      //   userEmail: ["sponsorship@becodemy.com"],
-      //   subject: subjectTitle,
-      //   content: html,
-      // }).then((res:any) => {
-      //   toast.success("Email sent successfully!");
-      //   history.push("/dashboard/write");
-      // });
     });
   };
 
+  // MARK: SendEmail
+  const SendEmail = () => {
+    const unlayer = emailEditorRef.current?.editor;
+    const targetUserEmail = ["countstarss@163.com"]
+
+    unlayer?.exportHtml(async (data) => {
+      const { design, html } = data;
+      setJsonData(design);
+
+      await sendEmail({
+        userEmail: targetUserEmail,
+        subject: subjectTitle,
+        content: html,
+      }).then((res:any) => {
+        toast.success("Email sent successfully!");
+        history.push("/dashboard/write");
+      });
+    });
+  };
+
+  // MARK: saveDraft
   const saveDraft = async () => {
     const unlayer = emailEditorRef.current?.editor;
 
     unlayer?.exportHtml(async (data) => {
+      // INFO: design是保存的模板
       const { design } = data;
       try {
         const response = await saveEmail({
@@ -99,7 +117,10 @@ const Editor = ({ subjectTitle }: Props) => {
         >
           <span className='opacity-70'>Save Draft</span>
         </Button>
-        <Button className='bg-gray-600 text-white cursor-pointer hover:bg-gray-500 rounded'>
+        <Button 
+          className='bg-gray-600 text-white cursor-pointer hover:bg-gray-500 rounded'
+          onClick={SendEmail}
+        >
           <span className='opacity-70'>Send</span>
         </Button>
       </div>
