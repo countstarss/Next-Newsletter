@@ -13,7 +13,8 @@ interface Props {
 AWS.config.update({
   accessKeyId: process.env.MY_AWS_ACCESS_KEY,
   secretAccessKey:process.env.MY_AWS_SECRET_KEY,
-  region:'ap-southeast-2'
+  region:'ap-southeast-2',
+  credentials: new AWS.SharedIniFileCredentials({ profile: 'default' })
 })
 
 // MARK: AWS-getCred
