@@ -1,1 +1,1 @@
-Demo URL: [newsletter-one-iota.vercel.app](https://newsletter-one-iota.vercel.app/)
+Demo URL: https://newsletter-one-iota.vercel.app/
