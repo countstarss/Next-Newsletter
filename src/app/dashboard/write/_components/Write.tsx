@@ -36,7 +36,7 @@ const Write = (props: Props) => {
   }
   useEffect(() => {
     findEmails()
-  }, [user,findEmails()])
+  }, [user])
 
   // MARK: handleCreate
   const handleCreate = (emailTitle: string) => {
